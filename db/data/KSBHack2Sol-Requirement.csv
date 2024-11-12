@@ -1,4 +1,4 @@
-ID,TenderID,Flow,Head,SupplyFrequency,RatedVoltage
+ID,tender_ID,Flow,Head,SupplyFrequency,RatedVoltage
 R1,T1,30.0,50.0,50 Hz,400 V
 R2,T2,45.0,70.0,60 Hz,400 V
 R3,T3,35.0,55.0,50 Hz,380 V

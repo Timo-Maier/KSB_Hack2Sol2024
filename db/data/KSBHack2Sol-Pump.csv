@@ -1,4 +1,4 @@
-ID,RequirementID,PumpFamily,InletWidth,OutletWidth,MotorPerformance,MotorPoles,ImpellerDesign,ImpellerTrim,InstallationType,MotorEfficiency,MaxInletPressure,MaxOutletPressure,ShaftAxisPosition,Materials,GrossPrice,NetPrice,COGS,LeadTime
+ID,requirement_ID,PumpFamily,InletWidth,OutletWidth,MotorPerformance,MotorPoles,ImpellerDesign,ImpellerTrim,InstallationType,MotorEfficiency,MaxInletPressure,MaxOutletPressure,ShaftAxisPosition,Materials,GrossPrice,NetPrice,COGS,LeadTime
 P1,R1,Standard,"50 mm, DN 50",65 mm,"2.2 kW, 160 KJ",4,KAMA RAD,200 mm,Block V Pump only,IE3,PN10,PN10,H,G1A1,5000.0,4500.0,4000.0,30
 P2,R2,Industrial,"75 mm, DN 75",80 mm,"3.0 kW, 200 KJ",4,RAD,180 mm,Vertical Pump,IE4,PN16,PN16,V,G,7500.0,7000.0,6500.0,45
 P3,R3,Custom,"60 mm, DN 60",75 mm,"2.5 kW, 190 KJ",6,Special RAD,190 mm,Horizontal Pump,IE3,PN10,PN10,H,G2A2,6500.0,6000.0,5500.0,35
