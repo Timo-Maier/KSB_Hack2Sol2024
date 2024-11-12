@@ -7,6 +7,8 @@ entity Tender : cuid {
   NetValue              : Decimal(15, 2);
   Margin                : Decimal(5, 2);
   Currency              : String(3);
+  ContainsPump : Boolean;
+  HasCompetitor : Boolean;
   requirements : Composition of many Requirement on requirements.tender = $self;
 }
 
