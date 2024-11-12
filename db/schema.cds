@@ -3,6 +3,7 @@ namespace KSBHack2Sol;
 
 entity Tender : cuid {
   Description           : String;
+  TenderContents : String;
   GrossValue            : Decimal(15, 2);
   NetValue              : Decimal(15, 2);
   Margin                : Decimal(5, 2);
