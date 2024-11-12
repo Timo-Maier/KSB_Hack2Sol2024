@@ -1,0 +1,4 @@
+ID,Description,GrossValue,NetValue,Margin,Currency
+T1,Tender A,500000.0,450000.0,10.0,EUR
+T2,Tender B,750000.0,675000.0,10.0,USD
+T3,Tender C,300000.0,270000.0,10.0,GBP
