@@ -1,4 +1,8 @@
 module.exports = function (){
+
+  const {
+    Tender
+  } = this.entities;
     
     // Register your event handlers in here, for example, ...
     this.on ('Analyze', async (req) => {
@@ -80,7 +84,9 @@ module.exports = function (){
       //Speichern des Tenders ANLEGEN (separater Button) mit:
       // - Last analyzed at: leer
       // - Description
-      // - Tender Content      
+      // - Tender Content    
+      
+      //await INSERT.into(Tender).entries()
 
       //Speichern des Tenders ANALYZE mit:
       // - Last analyzed at: <timestamp>
