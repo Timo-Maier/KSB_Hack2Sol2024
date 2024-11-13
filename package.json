@@ -25,13 +25,21 @@
       "native_hana_associations": false
     },
     "requires": {
-    "API_PRODUCT_RECOMMENDATION": {
-      "kind": "odata",
+      "API_PRODUCT_RECOMMENDATION": {
+        "kind": "odata",
         "credentials": {
           "destination": "KSB-ProductRecommendation"
+        }
+      },
+      "[hybrid]": {
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db.sqlite"
+          }
+        }
       }
     }
-  }
   },
   "sapux": [
     "app/tenderui"

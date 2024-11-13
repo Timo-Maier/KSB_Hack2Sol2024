@@ -10,6 +10,7 @@ entity Tender : cuid {
   Currency              : String(3);
   ContainsPump : Boolean;
   HasCompetitor : Boolean;
+  LastAnalyzedAt: DateTime;
   requirements : Composition of many Requirement on requirements.tender = $self;
 }
 
