@@ -74,8 +74,27 @@ module.exports = function (){
       const requirements_responseContent = response.getContent();
       console.log(requirements_responseContent)
 
+      //String der Responses jeweils als json
+      //
+
+      //Speichern des Tenders ANLEGEN (separater Button) mit:
+      // - Last analyzed at: leer
+      // - Description
+      // - Tender Content      
+
+      //Speichern des Tenders ANALYZE mit:
+      // - Last analyzed at: <timestamp>
+      // - Description
+      // - Tender Content
+      // - Tender has pump
+      // - Tender has competitors
+      //...
+
+      //zusätzlich Requirements speichern:
+      // - Flow, Head, Voltage mit V ohne Leerzeichen, Frequenz mit Hz ohne Leerzeichen
+
       //const bupa = await cds.connect.to('API_PRODUCT_RECOMMENDATION');
-      
+
 
     })
   }
