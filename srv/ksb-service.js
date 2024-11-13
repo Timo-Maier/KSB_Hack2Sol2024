@@ -73,5 +73,9 @@ module.exports = function (){
       
       const requirements_responseContent = response.getContent();
       console.log(requirements_responseContent)
+
+      //const bupa = await cds.connect.to('API_PRODUCT_RECOMMENDATION');
+      
+
     })
   }
