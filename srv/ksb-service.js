@@ -46,9 +46,11 @@ module.exports = function () {
     console.log(tender_responseContent)
     
     const lastAnalyzedAt = new Date();
-    const tender = { Description: query[0].TenderDescription, TenderContent: query[0].TenderContent, LastAnalyzedAt: lastAnalyzedAt };  
+    const tender = { Description: query[0].Description, TenderContent: query[0].TenderContent, LastAnalyzedAt: lastAnalyzedAt };  
     //await INSERT.into(Tender).entries(tender);
-    await cds.tx(req).run(INSERT.into(Tender).entries(tender));
+    //await cds.tx(req).run(INSERT.into(Tender).entries(tender));
+    let tenderID = query[0].ID;
+    await UPDATE(Tender).where({ID: tenderID}).set(tender);
 
     const requirements_instruction = `
       Extract from the text at the end of this prompt the pressure head (Head), 

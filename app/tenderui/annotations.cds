@@ -32,23 +32,8 @@ annotate service.Tenders with @(
         },
         {
             $Type : 'UI.DataField',
-            Label : 'GrossValue',
-            Value : GrossValue,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'NetValue',
-            Value : NetValue,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Margin',
-            Value : Margin,
-        },
-        {
-            $Type : 'UI.DataField',
-            Label : 'Currency',
-            Value : Currency,
+            Value : LastAnalyzedAt,
+            Label : 'LastAnalyzedAt',
         },
     ],
     UI.FieldGroup #TenderContent : {
