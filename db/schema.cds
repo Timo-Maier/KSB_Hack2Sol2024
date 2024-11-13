@@ -3,6 +3,7 @@ using { Attachments } from '@cap-js/attachments';
 namespace KSBHack2Sol;
 
 entity Tender : cuid {
+  status : Integer default 0;
   Description           : String;
   TenderContent : String;
   GrossValue            : Decimal(15, 2);
@@ -23,6 +24,7 @@ entity Requirement : cuid {
   SupplyFrequency       : String;           // e.g., 50 Hz
   RatedVoltage          : String;           // e.g., 400 V
   pump : Composition of one Pump on pump.requirement = $self;
+  status: Integer default 0;
 }
 
 entity Pump : cuid {

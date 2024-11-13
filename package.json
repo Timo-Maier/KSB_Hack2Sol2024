@@ -10,8 +10,11 @@
     "@cap-js/hana": "^1",
     "@sap-ai-sdk/foundation-models": "^1.2.0",
     "@sap/cds": "^8",
+    "@sap/xsenv": "^5.4.0",
+    "axios": "^1.7.7",
     "express": "^4",
-    "pdf-to-png-converter": "^3.5.2"
+    "pdf-to-png-converter": "^3.5.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.7.0",

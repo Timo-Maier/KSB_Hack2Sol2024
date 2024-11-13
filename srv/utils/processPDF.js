@@ -5,15 +5,16 @@ const convertPdfToPngBase64 = async (pdfBuffer) => {
         const pngPages = await pdfToPng(pdfBuffer, {
             viewportScale: 2.0, // Adjust scale if necessary
             outputFileMask: 'page', // Base name for output files
-            pages: [1] // Convert only the first page
+            pages: 'all' // Convert only the first page
         });
 
         // Convert the first page to base64
-        const base64Data = pngPages[0].content.toString('base64');
-        console.log('PDF converted to PNG in base64 format.');
-        return base64Data;
+        const base64Images = pngPages.map(page => page.content.toString('base64'));
+ 
+        console.log('PDF converted to PNGs in base64 format for all pages.');
+        return base64Images;
     } catch (error) {
-        console.error('Error converting PDF to PNG:', error);
+        console.error('Error converting PDF to PNGs:', error);
         throw error;
     }
 };
