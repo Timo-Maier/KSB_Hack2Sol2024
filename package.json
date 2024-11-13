@@ -32,14 +32,17 @@
           "destination": "KSB-ProductRecommendation"
         }
       },
-      "[hybrid]": {
+
         "db": {
           "kind": "sqlite",
           "credentials": {
             "url": "db.sqlite"
           }
+        },
+        "attachments": {
+          "scan": false
         }
-      }
+      
     }
   },
   "sapux": [
