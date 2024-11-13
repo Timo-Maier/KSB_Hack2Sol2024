@@ -5,6 +5,7 @@ service KSBService {
     entity Tenders as projection on Tender
     actions {
         action Analyze();
+        action pdfAnalyze();
     };
     entity Requirements as projection on Requirement;
     entity Pumps as projection on Pump;
