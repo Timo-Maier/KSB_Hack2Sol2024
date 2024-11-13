@@ -1,4 +1,5 @@
 using { cuid } from '@sap/cds/common';
+using { Attachments } from '@cap-js/attachments';
 namespace KSBHack2Sol;
 
 entity Tender : cuid {
@@ -11,6 +12,7 @@ entity Tender : cuid {
   ContainsPump : Boolean;
   HasCompetitor : Boolean;
   LastAnalyzedAt: DateTime;
+  attachments: Composition of many Attachments;
   requirements : Composition of many Requirement on requirements.tender = $self;
 }
 
