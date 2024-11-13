@@ -44,13 +44,6 @@ module.exports = function () {
 
     const tender_responseContent = response.getContent();
     console.log(tender_responseContent)
-    
-    const lastAnalyzedAt = new Date();
-    const tender = { Description: query[0].Description, TenderContent: query[0].TenderContent, LastAnalyzedAt: lastAnalyzedAt };  
-    //await INSERT.into(Tender).entries(tender);
-    //await cds.tx(req).run(INSERT.into(Tender).entries(tender));
-    let tenderID = query[0].ID;
-    await UPDATE(Tender).where({ID: tenderID}).set(tender);
 
     const requirements_instruction = `
       Extract from the text at the end of this prompt the pressure head (Head), 
@@ -87,9 +80,28 @@ module.exports = function () {
     const requirements_responseContent = response.getContent();
     console.log(requirements_responseContent)
 
-    //String der Responses jeweils als json
-    //
-    let jsonObject = JSON.parse(responseContent);
+    //String der Tender-Response als json
+    let jsonObject = JSON.parse(tender_responseContent);
+      console.log("Resulting json: \n", jsonObject)
+
+      //Speichern des Tenders ANALYZE mit:
+    // - Last analyzed at: <timestamp>
+    // - Description
+    // - Tender Content
+    // - Tender has pump
+    // - Tender has competitors
+    //...
+
+    const lastAnalyzedAt = new Date();
+    const tender = { Description: query[0].Description, TenderContent: query[0].TenderContent, LastAnalyzedAt: lastAnalyzedAt, ContainsPump: jsonObject.ContainsPump, HasCompetitor: jsonObject.HasCompetitor };  
+    //await INSERT.into(Tender).entries(tender);
+    //await cds.tx(req).run(INSERT.into(Tender).entries(tender));
+    let tenderID = query[0].ID;
+    await UPDATE(Tender).where({ID: tenderID}).set(tender);
+
+    //String der Requirements-Responses jeweils als json
+    //@Loop über die json Requirements!
+    jsonObject = JSON.parse(requirement_responseContent);
 
     console.log("Concat HZ to SupplyFrequency")
       jsonObject.SupplyFrequency += 'HZ'
@@ -98,24 +110,22 @@ module.exports = function () {
       jsonObject.RatedVoltage += 'V'
  
       console.log("Resulting json: \n", jsonObject)
-
-    //Speichern des Tenders ANLEGEN (separater Button) mit:
-    // - Last analyzed at: leer
-    // - Description
-    // - Tender Content    
-
-    //Speichern des Tenders ANALYZE mit:
-    // - Last analyzed at: <timestamp>
-    // - Description
-    // - Tender Content
-    // - Tender has pump
-    // - Tender has competitors
-    //...
-
-    //zusätzlich Requirements speichern:
+  
+    //@todo: Requirements speichern:
     // - Flow, Head, Voltage mit V ohne Leerzeichen, Frequenz mit Hz ohne Leerzeichen
 
-    //const bupa = await cds.connect.to('API_PRODUCT_RECOMMENDATION');
+    const prd_rcmd = await cds.connect.to('API_PRODUCT_RECOMMENDATION');
+    const prd_rcmd_response = await prd_rcmd.send({
+      method: "POST",
+      path: "/Bulk",
+      data: {
+        
+      }
+
+    });
+
+
+
 
 
   })
