@@ -1,10 +1,56 @@
 const { log } = require('@sap/cds');
+const {getBase64ForLLM, parseJsonContent} = require("./utils/processPDF")
 
 module.exports = function () {
 
   const {
-    Tender
+    Tender, 'Tender.attachments': Attachments
   } = cds.entities('KSBHack2Sol');
+
+  this.on("pdfAnalyze", async (req) => {
+
+    const {
+      AzureOpenAiChatClient, AzureOpenAiEmbeddingClient, ChatMessages
+    } = await import('@sap-ai-sdk/foundation-models');
+
+    const tender_instruction = `
+      Extract from the text at the end of this prompt if 
+      a pump is requested in the text (haspump) and if there any hints that the 
+      pump should be manufactured by a specific company other than KSB (hascompetitor).
+      Provide the response as JSON in the example format below.
+      There should be only one JSON message for the complete text.
+      
+      {
+             "HasPump": "True",
+             "HasCompetitor" : "False"
+      }
+      The text is a base64 document
+      `;
+      const chatClient = new AzureOpenAiChatClient('gpt-4o');
+
+    const tender = await req.query
+    const AttachmentService = await cds.connect.to("attachments")
+    const attachment = await SELECT.one.from(Attachments).where({up__ID: tender[0].ID})
+
+    const fileStream = await AttachmentService.get(Attachments, attachment)
+    const base64 = await getBase64ForLLM(fileStream, attachment.mimeType)
+
+    const llm_instruction = tender_instruction + base64
+
+
+    const res = await chatClient.run({
+      messages: [
+        {
+          role: 'user',
+          content: llm_instruction
+        }
+      ]
+    })
+    const content = res.data?.choices?.[0]?.message?.content;
+    const json = parseJsonContent(content)
+    console.log(json)
+
+  })
 
   // Register your event handlers in here, for example, ...
   this.on('Analyze', async (req) => {

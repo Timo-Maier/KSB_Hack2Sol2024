@@ -1,5 +1,13 @@
 using KSBService as service from '../../srv/ksb-service';
 annotate service.Tenders with @(
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'KSBService.pdfAnalyze',
+            Label : 'PDF Analyze',
+        },
+    ],
+
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
         Data : [
