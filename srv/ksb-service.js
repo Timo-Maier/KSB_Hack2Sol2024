@@ -58,6 +58,8 @@ module.exports = function () {
       the response as JSON in the example format below.
       Return only the number values for above JSON without the units.
       For every detected pump there should be one JSON message.
+      The answer must be a valid json in the valid json format, nothing else.
+      Please just return plain text without any JSON formatting.
       
       {
              "Flow" : "5 m³/h",
@@ -87,6 +89,15 @@ module.exports = function () {
 
     //String der Responses jeweils als json
     //
+    let jsonObject = JSON.parse(responseContent);
+
+    console.log("Concat HZ to SupplyFrequency")
+      jsonObject.SupplyFrequency += 'HZ'
+ 
+      console.log("Concat V to RatedVoltage")
+      jsonObject.RatedVoltage += 'V'
+ 
+      console.log("Resulting json: \n", jsonObject)
 
     //Speichern des Tenders ANLEGEN (separater Button) mit:
     // - Last analyzed at: leer
