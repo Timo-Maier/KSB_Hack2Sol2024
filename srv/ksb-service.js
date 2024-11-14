@@ -13,6 +13,7 @@ module.exports = function () {
 
   this.on("getProductRecommendations", async (req) => {
     const requirement = (await req.query)[0]
+
     const destination = await getDestination("KSB-ProductRecommendation")
     const token = await getToken(destination)
     const prd_rcmd_response = await axios({
@@ -29,19 +30,19 @@ module.exports = function () {
         "features": [
           {
             "name": "KSB_FLOW",
-            "value": "30"
+            "value": `${requirement.Flow}`
           },
           {
             "name": "KSB_HEAD",
-            "value": "50"
+            "value": `${requirement.Head}`
           },
           {
             "name": "KSB_SUPPLYFREQUENCY",
-            "value": "50HZ"
+            "value": `${requirement.SupplyFrequency}HZ`
           },
           {
             "name": "KSB_RATEDVOLTAGE",
-            "value": "400V"
+            "value": `${requirement.RatedVoltage}V`
           }
         ],
         "lowerthreshold": 0.00
@@ -60,19 +61,19 @@ module.exports = function () {
         "features": [
           {
             "name": "KSB_FLOW",
-            "value": "30"
+            "value": `${requirement.Flow}`
           },
           {
             "name": "KSB_HEAD",
-            "value": "50"
+            "value": `${requirement.Head}`
           },
           {
             "name": "KSB_SUPPLYFREQUENCY",
-            "value": "50HZ"
+            "value": `${requirement.SupplyFrequency}HZ`
           },
           {
             "name": "KSB_RATEDVOLTAGE",
-            "value": "400V"
+            "value": `${requirement.RatedVoltage}V`
           },
           {
             "name": "KMAT",
